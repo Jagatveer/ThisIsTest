@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/thisistest
+permissions:
+  - object: /var/www/html/
+    pattern: "**"
+    owner: nobody
+    group: nobody
