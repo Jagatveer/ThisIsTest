@@ -4,17 +4,13 @@ env:
   - CI_HOME=`pwd`/../../
 language: ruby
 rvm:
-- '2.0.0'
-
+- 2.0.0
 install: echo "party time"
-
 script: echo "like it's cat meow 99" && true
-
 before_deploy:
-  - zip -r build *
-  - mkdir -p dpl_cd_upload
-  - mv build.zip dpl_cd_upload/build.zip
-
+- zip -r build *
+- mkdir -p dpl_cd_upload
+- mv build.zip dpl_cd_upload/build.zip
 deploy:
 - provider: s3
   access_key_id: AKIAJIHRZMFV3GS3ZYPA
@@ -29,8 +25,11 @@ deploy:
   access_key_id: AKIAJIHRZMFV3GS3ZYPA
   secret_access_key: *1
   bucket: sf.active8me
-  key: 'bundle.zip'
+  key: bundle.zip
   bundle_type: zip
   application: active8me
   deployment_group: active8me-group
   on: *2
+notifications:
+  slack:
+    secure: cPCFhCr34t+EoMiOubViyxo7XHeZ6f/ZRscktP4HmRR34dfIGHLihx2Xth1I09EFoF2XFgwTJq89NxRRzbdzbvBHGd5vcyyRJ4V9zPubnSxFSzfJosrtWJ+gh3dbbwZxgavqXiOxjjTLIy7DWyRlC6DXiME46sRcA/3sbj6PFD22uvrc2yHRuHJ31oqXhT+E9qMwmG3aSiBfeA6LUAaT8YL7HcRi59QiJYkicVF8Z8M1bqHlm+5chicHKNJDOS6+yPPv/nMhLirU2rBuTZMjqlcZHCF7vKiv4DHaKHjJ09WxIZr5C5MIPW+JbY0xYQS2EPlYdb1+RtIVuszIeB/dP978LKimOSmU9gYnqPvItwFfIn80iCGbkCh9MCb27sQcqVvN0RlM6V0YTjabZeyu72KRr8baHNyItaHlOa3NojhIWxduQb4Y6AjH17K8jocYdo9eUXuHYh82vP4LqYaezWV2qmEvs8AiNpgVhFFXJVkMdtQqHH+mxb4Bj9ZEViaiOzyTR34CTB8/VA2zkVJe9EYZd52JGkCbQ/QZmFPfHIbj6uLaVUXGir4n6ZNnKfJkpbVNrrpwJVJ2pKh8Ec9aymr5ki4L8/kcDfTbwH9alPi3bnZbOIjixpTVglGZfiei2z8uUlOz0Cm38rmxkc2vdzsoiApmS1ksJPOK31vbVzY=

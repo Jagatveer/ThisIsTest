@@ -4,6 +4,7 @@
  * wp-blog-header.php which does and tells WordPress to load the theme.
  * This is only a test file. LOL
  * Another attempt
+ * Attempt with Slack integration
  * @package WordPress
  */
 
