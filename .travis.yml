@@ -1,6 +1,15 @@
 sudo: false
+env:
+  global:
+  - CI_HOME=`pwd`/../../
+language: ruby
 rvm:
 - '2.0.0'
+
+install: echo "party time"
+
+script: echo "like it's cat meow 99" && true
+
 deploy:
 - provider: s3
   access_key_id: AKIAJIHRZMFV3GS3ZYPA
@@ -15,9 +24,9 @@ deploy:
   access_key_id: AKIAJIHRZMFV3GS3ZYPA
   secret_access_key: *1
   bucket: sf.active8me
-  key: ''
+  key: 'bundle.zip'
   bundle_type: zip
-  application: ThisIsTest
+  application: active8me
   deployment_group: active8me-group
   on: *2
 before_deploy:
