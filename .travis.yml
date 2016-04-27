@@ -10,6 +10,11 @@ install: echo "party time"
 
 script: echo "like it's cat meow 99" && true
 
+before_deploy:
+  - zip -r build *
+  - mkdir -p dpl_cd_upload
+  - mv build.zip dpl_cd_upload/build.zip
+
 deploy:
 - provider: s3
   access_key_id: AKIAJIHRZMFV3GS3ZYPA
@@ -29,6 +34,3 @@ deploy:
   application: active8me
   deployment_group: active8me-group
   on: *2
-before_deploy:
-- mkdir -p dpl_cd_upload
-- mv build.zip dpl_cd_upload/''
