@@ -1,0 +1,22 @@
+deploy:
+- provider: s3
+  access_key_id: AKIAJIHRZMFV3GS3ZYPA
+  secret_access_key: &1
+    secure: BjAB2eiTBj3Y5cUIr8XkIC+RivwK9pdZwrLZwcbb08mGN7d/holXH4EZDnGcSPTRVdf9kqdJo667LHrOlagNZ4DpZYdq2tvHz06zqH6+vc3V2fwClTeVBKmUBBF3pw8mcK+WQHDyNYj7hAk3qouhXuwZEbwqkYweMVbcJpOBvDR0vTO9PydlYJu1bCf/V7gDyOgYek/ZJZ47RPQyGYEh9fqE6agK1NK2Zep2G+H+MOugKQm+f7ezcfB0DfvyHXtlA2v1CVQE6ZO4VXrOWqotqtiyFITyD2pD+Q/dRf5X/hlbMgSiQAk8+oCigYiA+RuEdJbPbQfTDBZS7tWGYEip10qazhQf1D/OIK8rEmeV0Lh4AxvVKNC2nh7sKqBHhb1tsgY7inrdOklysks0NGDjme8hiG/pcsJRBtiiAN8YamMJjPrcMY28fhw4FveKrizWj9x4jttAtiHfyZ5NHkiM233oWCWlK+RlAhwXE3zLZhd8tzSVmg+rELbyWXPpwyktngrpHyvkHeL+obtulwn8YX1QhTi4m4b3DGMdZVpUe6ISXvW/OIfG2tRzKtGToPWLKsyTaUeTa/lVE9dGzUkFYYWmhkfvzlzdWahFr770qvLT59+7X0n5IS16S5/8kzhs7BaVvVTL2w0Ukw8qph/6YeGmVuz8R6rT6958hxmaQWk=
+  local_dir: dpl_cd_upload
+  skip_cleanup: true
+  on: &2
+    repo: Jagatveersingh/ThisIsTest
+  bucket: sf.active8me
+- provider: codedeploy
+  access_key_id: AKIAJIHRZMFV3GS3ZYPA
+  secret_access_key: *1
+  bucket: sf.active8me
+  key: ''
+  bundle_type: zip
+  application: ThisIsTest
+  deployment_group: active8me-group
+  on: *2
+before_deploy:
+- mkdir -p dpl_cd_upload
+- mv build.zip dpl_cd_upload/''
