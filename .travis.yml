@@ -25,7 +25,7 @@ deploy:
   access_key_id: AKIAJIHRZMFV3GS3ZYPA
   secret_access_key: *1
   bucket: sf.active8me
-  key: bundle.zip
+  key: build.zip
   bundle_type: zip
   application: active8me
   deployment_group: active8me-group
